@@ -1,0 +1,47 @@
+
+<div>
+    <h2><span>Indent</span> {{vm.indent.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Indent Id</span></dt>
+        <dd>
+            <span>{{vm.indent.indentId}}</span>
+        </dd>
+        <dt><span>Material Type</span></dt>
+        <dd>
+            <span>{{vm.indent.materialType}}</span>
+        </dd>
+        <dt><span>Material Code</span></dt>
+        <dd>
+            <span>{{vm.indent.materialCode}}</span>
+        </dd>
+        <dt><span>Budgeted</span></dt>
+        <dd>
+            <span>{{vm.indent.budgeted}}</span>
+        </dd>
+        <dt><span>Indents</span></dt>
+        <dd>
+            <span>{{vm.indent.indents}}</span>
+        </dd>
+        <dt><span>Current Status</span></dt>
+        <dd>
+            <span>{{vm.indent.currentStatus}}</span>
+        </dd>
+        <dt><span>User</span></dt>
+        <dd>
+            {{vm.indent.user.login}}
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="indent-detail.edit({id:vm.indent.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down"> Edit</span>
+    </button>
+</div>

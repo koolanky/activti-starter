@@ -1,0 +1,103 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myIndentLabel">Create or edit a Indent</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.indent.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.indent.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_indentId">Indent Id</label>
+            <input type="number" class="form-control" name="indentId" id="field_indentId"
+                    ng-model="vm.indent.indentId"
+                    required/>
+            <div ng-show="editForm.indentId.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.indentId.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.indentId.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_materialType">Material Type</label>
+            <input type="text" class="form-control" name="materialType" id="field_materialType"
+                    ng-model="vm.indent.materialType"
+                    required/>
+            <div ng-show="editForm.materialType.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.materialType.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_materialCode">Material Code</label>
+            <input type="text" class="form-control" name="materialCode" id="field_materialCode"
+                    ng-model="vm.indent.materialCode"
+                    required/>
+            <div ng-show="editForm.materialCode.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.materialCode.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_budgeted">Budgeted</label>
+                <input type="checkbox" name="budgeted" id="field_budgeted"
+                          ng-model="vm.indent.budgeted"/>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_indents">Indents</label>
+            <input type="text" class="form-control" name="indents" id="field_indents"
+                    ng-model="vm.indent.indents"
+                    required/>
+            <div ng-show="editForm.indents.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.indents.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_currentStatus">Current Status</label>
+            <select class="form-control" name="currentStatus" ng-model="vm.indent.currentStatus" id="field_currentStatus" required>
+                <option value="Approved">Approved</option>
+                <option value="Rejected">Rejected</option>
+                <option value="Pending">Pending</option>
+            </select>
+            <div ng-show="editForm.currentStatus.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.currentStatus.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="field_user">User</label>
+            <select class="form-control" id="field_user" name="user" ng-model="vm.indent.user" ng-options="user as user.login for user in vm.users track by user.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>
